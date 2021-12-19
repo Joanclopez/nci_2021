@@ -53,6 +53,11 @@ const distribute = async() => {
     console.log(`distribution amount per address is ${distributionAmount}`);
 
     for (looper = 0; looper < numberOfAddresses; looper++) {
+        //for windows users:
+        //in the accounts.txt file windows add a breakline character \n and needs to be removed to run the script
+        //uncomment the next line:
+        //distributionAddresses[looper] = distributionAddresses[looper].replace(/(\r\n|\n|\r)/gm, "")
+
         console.log(`about to distribute ${tokenSymbol}, ${distributionAmount} tokens go to ${distributionAddresses[looper]}`)
         // execute a ERC20transfer(ownerAddress, distributionAddresss[looper], distributionAmount);
         let retval = await method.transferToken(distributionAddresses[looper], distributionAmount)
